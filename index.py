@@ -1,146 +1,117 @@
-import time
-import os
+unidades = [
+    "zero",
+    "um",
+    "dois",
+    "três",
+    "quatro",
+    "cinco",
+    "seis",
+    "sete",
+    "oito",
+    "nove",
+]
+dezenas = [
+    "dez",
+    "onze",
+    "doze",
+    "treze",
+    "quatorze",
+    "quinze",
+    "dezesseis",
+    "dezessete",
+    "dezoito",
+    "dezenove",
+]
+dezenas_dezenas = [
+    "vinte",
+    "trinta",
+    "quarenta",
+    "cinquenta",
+    "sessenta",
+    "setenta",
+    "oitenta",
+    "noventa",
+]
+centenas = [
+    "cem",
+    "cento",
+    "duzentos",
+    "trezentos",
+    "quatrocentos",
+    "quinhentos",
+    "seiscentos",
+    "setecentos",
+    "oitocentos",
+    "novecentos",
+]
 
-print ("{:^73}".format("\033[33m\033[1mSeja bem-vindo(a)!\033[0;0m"))
 
-def binary_subtraction(a, b):
-    return bin(int(a, 2) - int(b, 2))[2:]
-def binary_addition(a, b):
-    return bin(int(a, 2) + int(b, 2))[2:]
-opcao = -5
+def numero_por_extenso(num: int) -> str:
+    if num < 0 or num > 999999:
+        return "Número inválido"
 
-#Início
-while True:
-  print ('\033[34m------------------------------------------------------------------\033[0;0m')
-  print ("""Escolha um cálculo:
-[1] Conversão da base decimal para as bases binário e octadecimal.
-[2] Conversão das bases binário e octadecimal para decimal.
-[3] Calculadora aritmética de binários (Soma e subtração).
-[4] Encerrar""")
-  print ('\033[34m------------------------------------------------------------------\033[0;0m')
-  opcao=int(input("Digite sua opção: "))
-  print ('\033[34m------------------------------------------------------------------\033[0;0m')
-  print('')
+    if num == 0:
+        return "zero"
 
-  #Primeira opção
-  if opcao == 1:
-    num=(int(input("Digite um número da base decimal: ")))
-    print (f"{num} convertido para binário é igual", "\033[32m\033[1m{:b}\033[0;0m".format(num, (num)))
-  if opcao == 1:
-    print (f"{num} convertido para octadecimal é igual", "\033[32m\033[1m{:o}\033[0;0m".format(num, (num)))
-    print ('')
- 
-  if opcao == 2:
-    nb=(input("Digite um número binário: "))
-    try:
-      b=int(nb,2)
-      print (f"{nb} convertido para decimal é igual \033[32m\033[1m{b}\033[0;0m")
-      print ('')
-    except:
-      print("\033[31m\033[1mO número digitado não é binário!\033[0;0m")
-      print('')
-    print ('\033[34m------------------------------------------------------------------\033[0;0m')
-    print('')
-    
-  #Segunda opção
-  if opcao == 2:
-    try:
-      nb=(input("Digite um número octal: "))
-      o=int(nb,8)
-      print (f"{nb} convertido para decimal é igual \033[32m\033[1m{o}\033[0;0m")
-      print('')
-    except:
-      print("\033[31m\033[1mNúmero inválido, pois a base octaldecimal comporta apenas de 0 a 7.\033[0;0m")
-      print ('')
+    extenso = ""
 
-  #Terceira opção
-  elif opcao == 3:
-    print ('\033[34m------------------------------------------------------------------\033[0;0m')
-    print("""Escolha opção desejada: 
-  [1] Subtração
-  [2] Soma """)
-    print ('\033[34m------------------------------------------------------------------\033[0;0m')
-    opccao = int(input("Digite sua opção: "))
-    print ('\033[34m------------------------------------------------------------------\033[0;0m')
-    print ('')
-    if opccao == 1:
-      numero_binario = input('Digite o primeiro número binário: ')
-      numero_binario2 = input('Digite o segundo número binário: ')
-      try:
-        resultado_subtração = binary_subtraction(numero_binario, numero_binario2)
-        print(f'Resultado da subtração: \033[32m\033[1m{resultado_subtração}\033[0;0m')
-        print ('')
-      except:
-        print("\033[31m\033[1mOs números digitados não são binários!\033[0;0m")
-        print ('')
-            
-    if opccao == 2:
-      numero_binario1 = input('Digite o primeiro número binário: ')
-      numero_binario3 = input('Digite o segundo número binário: ')
-      try:
-        resultado_soma = binary_addition(numero_binario1, numero_binario3)
-        print(f'Resultado da soma: \033[32m\033[1m{resultado_soma}\033[0;0m')
-        print ('')
-      except:
-          print("\033[31m\033[1mOs números digitados não são binários!\033[31m")
-          print ('')
+    if num >= 100000:
+        if num == 100_000:
+            return "cem mil"
+        if num % 100000 == 0:
+            return extenso + "mil"
+        extenso += centenas[num // 100000] + " e "
+        num %= 100000
 
-  #Encerramento
-  elif opcao == 4:
-    print("F")
-    time.sleep(0.2)
-    os.system('clear')
-    print("Fe")
-    time.sleep(0.2)
-    os.system('clear')
-    print("Fec")
-    time.sleep(0.2)
-    os.system('clear')
-    print("Fech")
-    time.sleep(0.2)
-    os.system('clear')
-    print("Fecha")
-    time.sleep(0.2)
-    os.system('clear')
-    print("Fechan")
-    time.sleep(0.2)
-    os.system('clear')
-    print("Fechand")
-    time.sleep(0.2)
-    os.system('clear')
-    print("Fechando")
-    time.sleep(0.2)
-    os.system('clear')
-    print("Fechando o")
-    time.sleep(0.2)
-    os.system('clear')
-    print("Fechando o pr")
-    time.sleep(0.2)
-    os.system('clear')
-    print("Fechando o pro")
-    time.sleep(0.2)
-    os.system('clear')
-    print("Fechando o prog")
-    time.sleep(0.2)
-    os.system('clear')
-    print("Fechando o progr")
-    time.sleep(0.2)
-    os.system('clear')
-    print("Fechando o progra")
-    time.sleep(0.2)
-    os.system('clear')
-    print("Fechando o program")
-    time.sleep(0.2)
-    os.system('clear')
-    print("Fechando o programa")
-    time.sleep(0.2)
-    os.system('clear')
-    print("Fechando o programa.")
-    time.sleep(0.2)
-    os.system('clear')
-    print("Fechando o programa..")
-    time.sleep(0.2)
-    os.system('clear')
-    print("Fechando o programa...")
+    if num >= 10000:
+        if num >= 20000:
+            extenso += dezenas_dezenas[num // 10000 - 2] + " "
+        else:
+            extenso += dezenas[num % 10] + " "
+        num %= 10000
+        if num == 0:
+            extenso += "mil "
+        else:
+            extenso += "e "
 
-    break
+    if num >= 1000:
+        if num // 1000 == 1:
+            extenso += "mil "
+        else:
+            extenso += unidades[num // 1000] + " mil "
+        num %= 1000
+
+    if num >= 100:
+        extenso += centenas[num // 100] + " "
+        num %= 100
+        if num == 0:
+            return extenso
+        else:
+            extenso += "e "
+
+    if num >= 10:
+        if num >= 20:
+            extenso += dezenas_dezenas[num // 10 - 2] + " "
+        else:
+            extenso += dezenas[num % 10] + " "
+        num %= 10
+
+    if num > 0:
+        if num == 1 and len(extenso) > 0 and extenso[-1] == "e":
+            extenso = extenso
+            extenso += "um"
+        else:
+            extenso += unidades[num]
+
+    return extenso
+
+
+# Exemplos de uso - escreva seu numero aqui
+print(numero_por_extenso(0))
+print(numero_por_extenso(123))
+print(numero_por_extenso(1050))
+
+print(numero_por_extenso(123_456))
+print(numero_por_extenso(100_000))
+print(numero_por_extenso(200_000))
+print(numero_por_extenso(999_999))
